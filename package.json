@@ -1,0 +1,20 @@
+{
+  "name": "rubikscube-nuxt",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt dev",
+    "train": "node ./train.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.5.1",
+    "@tensorflow/tfjs-node-gpu": "^1.5.1",
+    "nearest-color": "^0.4.4",
+    "nuxt": "^2.11.0"
+  }
+}
