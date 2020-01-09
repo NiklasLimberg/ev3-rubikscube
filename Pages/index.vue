@@ -12,12 +12,15 @@
         :outerRadius="20"
       ></vueCirle>
     </vueCanvas>
-    <div class="err" v-text="err"></div>
+    <div class="info">
+      <div v-text="err"></div>
+    </div>
   </div>
 </template>
 <script>
 const nearestColor = require("nearest-color").from({
   white: "#FFFFFF",
+  black: "#000000",
   red: "#f00",
   yellow: "#ff0",
   blue: "#00f",
@@ -25,6 +28,7 @@ const nearestColor = require("nearest-color").from({
   orange: "#FFA500"
 });
 
+import devtools from "@vue/devtools";
 import vueCanvas from "~/Components/vueCanvas.vue";
 import vueCirle from "~/Components/vueCirle.vue";
 
@@ -32,13 +36,15 @@ export default {
   data: function() {
     return {
       err: "",
-      offscreenCanvas: undefined,
       video: undefined,
       circles: []
     };
   },
   components: { vueCanvas, vueCirle },
   async mounted() {
+    if (process.env.NODE_ENV === "development") {
+      devtools.connect("192.168.178.29");
+    }
     try {
       const video = document.querySelector("video");
       const mediaStream = await navigator.mediaDevices.getUserMedia({
@@ -115,7 +121,8 @@ video {
   left: 0;
   z-index: 100;
 }
-.err {
+.info {
+  font-size: 3rem;
   position: absolute;
   bottom: 0;
   left: 0;
