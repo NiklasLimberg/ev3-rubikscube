@@ -1,6 +1,6 @@
 <template>
-  <div width="800px" height="800px">
-    <canvas width="800px" height="800px" class="vueCanvas" ref="vueCanvas"></canvas>
+  <div>
+    <canvas width="1080" height="1080" class="vueCanvas" ref="vueCanvas"></canvas>
     <slot></slot>
   </div>
 </template>
